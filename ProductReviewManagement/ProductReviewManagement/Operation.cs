@@ -81,7 +81,20 @@ namespace ProductReviewManagement
                 Console.WriteLine("\n");
                 Console.WriteLine($"{row["ProductId"]}\t|{row["UserId"]}\t|{row["Review"]}\t|{row["Rating"]}\t|{row["Islike"]}");
             }
-
+        }
+        public string RetrievedetailsWithLikes()
+        {
+                List<ProductModel> ProductReviewsList = new List<ProductModel>();
+                Datatables();
+                string productsList = "";
+                var res = from product in productd.AsEnumerable() where product.Field<bool>("IsLike") == true select product;
+                foreach (var product in res)
+                {
+                    Console.WriteLine("{0} | {1} | {2} | {3} | {4} ", product["ProductId"], product["UserId"], product["Rating"], product["Review"], product["IsLike"]);
+                    productsList += product["UserId"] + " ";
+                }
+                return productsList;
+            
         }
     }
 }
