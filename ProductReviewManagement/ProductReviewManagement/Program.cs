@@ -6,6 +6,7 @@
         {
             Console.WriteLine("Welcome To ProductReviewManagement Problem");
 
+            Operation operation = new Operation();
             List<ProductModel> products = new List<ProductModel>();
             products.Add(new ProductModel() { ProductId = 1, UserId = 1, Rating = 3, IsLike = true, Review = "Good" });
             products.Add(new ProductModel() { ProductId = 2, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
@@ -32,10 +33,7 @@
             products.Add(new ProductModel() { ProductId = 23, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
             products.Add(new ProductModel() { ProductId = 24, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
             products.Add(new ProductModel() { ProductId = 25, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
-            foreach (ProductModel product in products)
-            {
-                Console.WriteLine("ProductId: " + product.ProductId + " UserId: " + product.UserId + " Rating: " + product.Rating + " IsLike: " + product.IsLike + " Review: " + product.Review);
-            }
+            operation.GetTop3Records(products);
         }
-    }   
+    }
 }
