@@ -34,5 +34,10 @@ namespace ProductReviewManagement
                 Console.WriteLine(data.ProductID + " " + data.Count);
             }
         }
+        public void SkipTop5Records(List<ProductModel> list)
+        {
+            var result = list.OrderByDescending(x => x.Rating).Skip(5).ToList();
+            Display(result);
+        }
     }
 }
